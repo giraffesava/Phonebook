@@ -12,8 +12,25 @@
   justify-content: space-around;
 }
 
+.users {
+  margin-top: 10px;
+  height: 380px;
+  overflow-y: scroll;
+  min-width: 400px;
+  border: 5px solid #265676;
+  background-color: #3a6c8e;
+}
+
 .contacts {
   margin-top: 10px;
-  height: 400px;
-  overflow-y: scroll;
+  align-items: center;
+  text-align: center;
+}
+
+.select {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  margin-top: 10px;
+  justify-content: space-between;
 }
