@@ -8,7 +8,7 @@ const Input = ({ type, placeholder, onChange, value }) => {
       type={type}
       placeholder={placeholder}
       className={classes.input}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => onChange(e.target.value.trimLeft())}
     />
   )
 }
