@@ -1,0 +1,7 @@
+.person {
+  padding: 2px;
+}
+.person:hover {
+  cursor: pointer;
+  background-color: #5e9ac2;
+}

@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  background-color: #0b3754;
+  height: 100vh;
+  color: #fff;
+  position: relative;
+}
+
+.author {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 460px) {
+  .container {
+    background-color: green;
+  }
+}
