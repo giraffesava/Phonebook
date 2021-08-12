@@ -1,27 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Input from './../UI/Input/Input'
 import classes from './MainView.module.css'
 import Information from '../Information/Information'
 import Users from './../Users/Users'
 import Select from './../Select/Select'
+import localStore from '../../utils'
+import { selector } from './../../store/selector'
+import { useSelector } from 'react-redux'
 
 const MainView = () => {
+  const load = useSelector(selector)
   const [userInfo, setUserInfo] = useState({
     name: '',
     phone: '',
     email: '',
+    id: '',
   })
   const [searchName, setSearchName] = useState('')
   const [value, setValue] = useState('default')
-  const data = JSON.parse(localStorage.getItem('persist:root'))
-  const data2 = JSON.parse(data.data)
 
   const getInformationHandler = (information) => {
     setUserInfo({
       name: information.name,
-      avatar: information.avatar,
       phone: information.phone,
       email: information.email,
+      id: information.id,
     })
   }
 
@@ -32,7 +35,6 @@ const MainView = () => {
       setValue(keyword)
     }
   }
-  console.log('value', value)
 
   return (
     <div className={classes.wrapper}>
@@ -45,6 +47,7 @@ const MainView = () => {
               type="text"
               onChange={setSearchName}
               value={searchName}
+              name="search"
             />
             <h1>Sort by</h1>
             <Select
@@ -58,14 +61,20 @@ const MainView = () => {
               ]}
             />
           </div>
-          <div className={classes.users}>
-            <Users
-              checkSort={value}
-              users={data2}
-              searchName={searchName}
-              onClick={getInformationHandler}
-            />
-          </div>
+          {
+            <div className={classes.users}>
+              {!load.loading ? (
+                <Users
+                  checkSort={value}
+                  users={localStore.users}
+                  searchName={searchName}
+                  onClick={getInformationHandler}
+                />
+              ) : (
+                <h1>Loading</h1>
+              )}
+            </div>
+          }
         </div>
         <div>
           <Information userInfo={userInfo} />
