@@ -30,6 +30,18 @@ const contactsReducer = (state = InitialStore, action) => {
         ...state,
         persistedState: action.payload,
       }
+    case Types.CHANGE_USERS:
+      // Changing data after editing by user
+      const changedUsers = [...state.data]
+      const foundIndex = changedUsers.findIndex(
+        (item) => item.id === action.newUser.id,
+      )
+      changedUsers[foundIndex] = action.newUser
+      console.log('foundIndex:', foundIndex, state.data)
+      return {
+        ...state,
+        data: changedUsers,
+      }
     default:
       return state
   }
