@@ -49,13 +49,9 @@ const Users = ({ searchName, users, onClick, checkSort }) => {
 
     // All other cases
     else {
-      return users ? (
-        users.map((person) => (
-          <Person key={person.id} information={person} onClick={onClick} />
-        ))
-      ) : (
-        <h1>loading...</h1>
-      )
+      return users.map((person) => (
+        <Person key={person.id} information={person} onClick={onClick} />
+      ))
     }
   }
   return usersData()

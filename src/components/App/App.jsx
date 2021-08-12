@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import Header from './../Header/Header'
 import MainView from '../MainView/MainView'
 import { sendRequestContacts } from './../../store/actions'
-import localStore from './../../utils'
+import users from './../../utils'
 
 const App = () => {
   // Send request to server to get user's data
@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     // Checking browsers on the presence of a localstorage
-    if (!localStore.users) {
+    if (!users) {
       dispatch(sendRequestContacts())
     }
   }, [])

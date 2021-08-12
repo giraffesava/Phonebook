@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Input from './../UI/Input/Input'
 import classes from './MainView.module.css'
 import Information from '../Information/Information'
 import Users from './../Users/Users'
 import Select from './../Select/Select'
-import localStore from '../../utils'
 import { selector } from './../../store/selector'
 import { useSelector } from 'react-redux'
 
 const MainView = () => {
-  const load = useSelector(selector)
+  const usersData = useSelector(selector)
   const [userInfo, setUserInfo] = useState({
     name: '',
     phone: '',
@@ -63,15 +62,15 @@ const MainView = () => {
           </div>
           {
             <div className={classes.users}>
-              {!load.loading ? (
+              {!usersData.loading ? (
                 <Users
                   checkSort={value}
-                  users={localStore.users}
+                  users={usersData.data}
                   searchName={searchName}
                   onClick={getInformationHandler}
                 />
               ) : (
-                <h1>Loading</h1>
+                <h1>Loading...</h1>
               )}
             </div>
           }
