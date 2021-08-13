@@ -1,6 +1,7 @@
 import React from 'react'
 import Person from './../Person/Person'
 import classes from './Users.module.css'
+import { v4 as uuidv4 } from 'uuid'
 
 const Users = ({ searchName, users, onClick, checkSort }) => {
   const usersData = () => {
@@ -28,12 +29,12 @@ const Users = ({ searchName, users, onClick, checkSort }) => {
           return group
         }, {})
       return Object.keys(grouped).map((letter) => (
-        <>
+        <div key={uuidv4()}>
           <h1 className={classes.groupedLetter}>{letter}</h1>
           {grouped[letter].map((person) => (
             <Person key={person.id} information={person} onClick={onClick} />
           ))}
-        </>
+        </div>
       ))
     }
 
