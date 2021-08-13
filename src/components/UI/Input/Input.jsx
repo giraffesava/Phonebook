@@ -7,7 +7,8 @@ const Input = ({ type, placeholder, onChange, value, name, user }) => {
       value={value}
       type={type}
       name={name}
-      autocomplete="off"
+      autoComplete="off"
+      maxLength="40"
       placeholder={placeholder}
       className={name === 'search' ? classes.input : classes.lines}
       onChange={

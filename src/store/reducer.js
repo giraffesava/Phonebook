@@ -37,7 +37,6 @@ const contactsReducer = (state = InitialStore, action) => {
         (item) => item.id === action.newUser.id,
       )
       changedUsers[foundIndex] = action.newUser
-      console.log('foundIndex:', foundIndex, state.data)
       return {
         ...state,
         data: changedUsers,
