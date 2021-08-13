@@ -4,6 +4,7 @@ import classes from './Information.module.css'
 import Button from './../UI/Button/Button'
 import Input from './../UI/Input/Input'
 import { changeUsers } from './../../store/actions'
+import InputField from '../InputField/InputField'
 
 const Information = ({ userInfo }) => {
   const dispatch = useDispatch()
@@ -16,19 +17,23 @@ const Information = ({ userInfo }) => {
     id: '',
   })
 
+  const initialUserData = {
+    name: userInfo.name,
+    phone: userInfo.phone,
+    email: userInfo.email,
+    id: userInfo.id,
+  }
+
   useEffect(() => {
     if (userInfo) {
-      setUser({
-        name: userInfo.name,
-        phone: userInfo.phone,
-        email: userInfo.email,
-        id: userInfo.id,
-      })
+      setUser(initialUserData)
     }
+    setError(false)
   }, [userInfo])
 
   const editChangeHandler = () => {
     setEdit((prev) => !prev)
+    setUser(initialUserData)
   }
 
   const saveUserToStore = () => {
@@ -40,55 +45,37 @@ const Information = ({ userInfo }) => {
       setError(false)
       dispatch(changeUsers(user))
       setEdit(false)
+    } else {
+      setError(true)
     }
-    setError(true)
   }
 
-  const userCheck = user.name || user.email || user.phone
+  // Add checking by id, because we can delete all lines of information except id
+  const userCheck = user.id
 
   const informationChecking = () => {
-    if (userCheck) {
+    if (userCheck || userCheck === 0) {
       if (edit) {
         return (
           <div className={classes.inputs}>
-            <div className={classes.eachInput}>
-              <h1>Name:</h1>
-              <Input
-                type="text"
-                user={user}
-                value={user.name}
-                onChange={setUser}
-                name="name"
-              >
-                {user.name}
-              </Input>
-            </div>
-
-            <div className={classes.eachInput}>
-              <h1>Email:</h1>
-              <Input
-                type="text"
-                user={user}
-                value={user.email}
-                onChange={setUser}
-                name="email"
-              >
-                {user.email}
-              </Input>
-            </div>
-
-            <div className={classes.eachInput}>
-              <h1>Phone:</h1>
-              <Input
-                type="text"
-                user={user}
-                value={user.phone}
-                onChange={setUser}
-                name="phone"
-              >
-                {user.phone}
-              </Input>
-            </div>
+            <InputField
+              name="name"
+              value={user.name}
+              onChange={setUser}
+              user={user}
+            />
+            <InputField
+              name="email"
+              value={user.email}
+              onChange={setUser}
+              user={user}
+            />
+            <InputField
+              name="phone"
+              value={user.phone}
+              onChange={setUser}
+              user={user}
+            />
           </div>
         )
       } else {
@@ -101,7 +88,11 @@ const Information = ({ userInfo }) => {
         )
       }
     } else {
-      return <h1>Choose any contact to open full information</h1>
+      return (
+        <h1 className={classes.tip}>
+          Choose any contact to open full information
+        </h1>
+      )
     }
   }
 
@@ -109,7 +100,7 @@ const Information = ({ userInfo }) => {
     <div className={classes.container}>
       <h1>INFORMATION:</h1>
       {informationChecking()}
-      {(user.name || user.email || user.phone) && (
+      {(user.id || user.id === 0) && (
         <div className={classes.buttons}>
           <Button type="button" onClick={editChangeHandler}>
             {edit ? 'Cancel' : 'Edit'}
