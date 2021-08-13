@@ -17,7 +17,6 @@ const MainView = () => {
   })
   const [searchName, setSearchName] = useState('')
   const [value, setValue] = useState('default')
-
   const getInformationHandler = (information) => {
     setUserInfo({
       name: information.name,
@@ -34,53 +33,56 @@ const MainView = () => {
       setValue(keyword)
     }
   }
-
-  return (
-    <div className={classes.wrapper}>
-      <div className={classes.content}>
-        <div className={classes.contacts}>
-          <h1>CONTACTS</h1>
-          <div className={classes.select}>
-            <Input
-              placeholder="Search by name"
-              type="text"
-              onChange={setSearchName}
-              value={searchName}
-              name="search"
-            />
-            <h1>Sort by</h1>
-            <Select
-              value={value}
-              defaultValue="Sort"
-              onChange={setValueHandler}
-              options={[
-                { value: 'default' },
-                { value: 'grouped' },
-                { value: 'name' },
-              ]}
-            />
-          </div>
-          {
-            <div className={classes.users}>
-              {!usersData.loading ? (
-                <Users
-                  checkSort={value}
-                  users={usersData.data}
-                  searchName={searchName}
-                  onClick={getInformationHandler}
-                />
-              ) : (
-                <h1>Loading...</h1>
-              )}
+  if (!usersData.error) {
+    return (
+      <div className={classes.wrapper}>
+        <div className={classes.content}>
+          <div className={classes.contacts}>
+            <h1>CONTACTS</h1>
+            <div className={classes.select}>
+              <Input
+                placeholder="Search by name"
+                type="text"
+                onChange={setSearchName}
+                value={searchName}
+                name="search"
+              />
+              <h1>Sort by</h1>
+              <Select
+                value={value}
+                defaultValue="Sort"
+                onChange={setValueHandler}
+                options={[
+                  { value: 'default' },
+                  { value: 'group' },
+                  { value: 'name' },
+                ]}
+              />
             </div>
-          }
-        </div>
-        <div>
-          <Information userInfo={userInfo} />
+            {
+              <div className={classes.users}>
+                {!usersData.loading ? (
+                  <Users
+                    checkSort={value}
+                    users={usersData.data}
+                    searchName={searchName}
+                    onClick={getInformationHandler}
+                  />
+                ) : (
+                  <h1>Loading...</h1>
+                )}
+              </div>
+            }
+          </div>
+          <div>
+            <Information userInfo={userInfo} />
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return <h1 className={classes.errorTitle}>Error, try to reload the page</h1>
+  }
 }
 
 export default MainView
