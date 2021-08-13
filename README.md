@@ -24,8 +24,6 @@ This website created for desktop, mobile and tablet. You can see mobile and tabl
     "redux-saga": "^1.1.3",
     "uuid": "^3.4.0"
 
-### I've used this API: https://api.giphy.com
-
 ### Mobile version:
 
 <img src="./assets/readme_files/mobile.png" height="350px" />
