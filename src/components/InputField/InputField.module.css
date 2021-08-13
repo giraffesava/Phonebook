@@ -7,5 +7,14 @@
 
 .line {
   display: block;
-  width: 120px;
+  width: 130px;
+  font-size: 35px;
+  text-transform: capitalize;
+}
+
+@media (max-width: 500px) {
+  .line {
+    font-size: 25px;
+    width: 100px;
+  }
 }

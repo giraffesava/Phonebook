@@ -20,16 +20,30 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1200px) {
   .input {
-    font-size: 15px;
-    width: 150px;
+    margin-left: 20px;
+    font-size: 30px;
+    width: 300px;
+  }
+  .lines {
+    width: 400px;
+    font-size: 25px;
+    background-color: #20587d;
+    color: #fff;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 500px) {
   .input {
+    font-size: 20px;
+    width: 220px;
+    margin: 0 auto;
+  }
+  .lines {
+    width: 200px;
     font-size: 15px;
-    width: 150px;
+    background-color: #20587d;
+    color: #fff;
   }
 }

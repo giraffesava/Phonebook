@@ -14,12 +14,16 @@
   background-color: #21587d;
 }
 
-@media (max-width: 500px) {
-}
-
 @media (max-width: 1200px) {
   .button {
-    width: 100px;
+    width: 200px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .button {
+    width: 140px;
     font-size: 20px;
   }
 }

@@ -30,9 +30,12 @@
 }
 
 @media (max-width: 1200px) {
+  .header {
+    justify-content: center;
+  }
   .title {
-    font-size: 25px;
-    margin: 0 0 0 -30px;
+    font-size: 30px;
+    margin: 0 0 0 -25px;
   }
   .headerPicture {
     width: 100px;
