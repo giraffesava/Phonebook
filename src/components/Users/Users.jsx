@@ -16,7 +16,7 @@ const Users = ({ searchName, users, onClick, checkSort }) => {
     }
 
     // If user choose "sort by group" then do groupping
-    else if (checkSort === 'grouped') {
+    else if (checkSort === 'group') {
       const grouped =
         users &&
         users.reduce((group, person) => {

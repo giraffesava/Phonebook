@@ -7,12 +7,14 @@ const Input = ({ type, placeholder, onChange, value, name, user }) => {
       value={value}
       type={type}
       name={name}
+      autocomplete="off"
       placeholder={placeholder}
-      className={classes.input}
+      className={name === 'search' ? classes.input : classes.lines}
       onChange={
         name === 'search'
-          ? (e) => onChange(e.target.value.trimLeft())
-          : (e) => onChange({ ...user, [e.target.name]: e.target.value })
+          ? (e) => onChange(e.target.value.trimStart())
+          : (e) =>
+              onChange({ ...user, [e.target.name]: e.target.value.trimStart() })
       }
     />
   )
