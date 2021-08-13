@@ -29,6 +29,7 @@ const Information = ({ userInfo }) => {
       setUser(initialUserData)
     }
     setError(false)
+    setEdit(false)
   }, [userInfo])
 
   const editChangeHandler = () => {
