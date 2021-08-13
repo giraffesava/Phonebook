@@ -5,9 +5,7 @@ import classes from './InputField.module.css'
 const InputField = ({ name, value, user, onChange }) => {
   return (
     <div className={classes.eachInput}>
-      <h1 className={classes.line}>
-        {name && name.charAt(0).toUpperCase() + name.slice(1)}:
-      </h1>
+      <h1 className={classes.line}>{name}:</h1>
       <Input
         type="text"
         user={user}
