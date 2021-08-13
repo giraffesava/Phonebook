@@ -5,7 +5,7 @@
 }
 .container {
   background-color: #0b3754;
-  height: 100vh;
+  min-height: 100vh;
   color: #fff;
   position: relative;
 }
@@ -15,10 +15,5 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-}
-
-@media (max-width: 460px) {
-  .container {
-    background-color: green;
-  }
+  color: #ecc54c;
 }

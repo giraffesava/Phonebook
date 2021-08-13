@@ -9,8 +9,32 @@
 .title {
   font-size: 35px;
   margin: 0 0 0 -45px;
+  color: #ecc54c;
 }
 
 .headerPicture {
   width: 150px;
+}
+
+@media (max-width: 500px) {
+  .header {
+    justify-content: center;
+  }
+  .title {
+    font-size: 30px;
+    margin: 0 auto;
+  }
+  .headerPicture {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .title {
+    font-size: 25px;
+    margin: 0 0 0 -30px;
+  }
+  .headerPicture {
+    width: 100px;
+  }
 }

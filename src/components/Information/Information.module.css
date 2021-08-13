@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 700px;
+  width: 600px;
   height: 500px;
   position: relative;
 }
@@ -15,6 +15,15 @@
 .buttons {
   position: absolute;
   bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 250px;
+}
+
+.tip {
+  color: #ecc54c;
+  font-size: 30px;
 }
 
 .error {
@@ -32,4 +41,14 @@
 .eachInput {
   display: flex;
   flex-direction: row;
+}
+
+@media (max-width: 500px) {
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 400px;
+    height: 400px;
+  }
 }

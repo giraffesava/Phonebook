@@ -13,3 +13,13 @@
 .button:hover {
   background-color: #21587d;
 }
+
+@media (max-width: 500px) {
+}
+
+@media (max-width: 1200px) {
+  .button {
+    width: 100px;
+    font-size: 20px;
+  }
+}
