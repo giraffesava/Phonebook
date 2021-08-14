@@ -31,7 +31,10 @@ const Users = ({ searchName, users, onClick, checkSort }) => {
           group[letter].push(person)
           return group
         }, {})
-      return Object.keys(grouped).map((letter) => (
+      const sortedGrouped = Object.keys(grouped).sort((a, b) =>
+        a.localeCompare(b),
+      )
+      return sortedGrouped.map((letter) => (
         <div key={uuidv4()}>
           <h1 className={classes.groupedLetter}>{letter}</h1>
           {grouped[letter].map((person) => personComponentCreator(person))}
