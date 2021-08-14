@@ -7,7 +7,6 @@ import { sendRequestContacts } from './../../store/actions'
 import users from './../../utils'
 
 const App = () => {
-  // Send request to server to get user's data
   const dispatch = useDispatch()
 
   useEffect(() => {

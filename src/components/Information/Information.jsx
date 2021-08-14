@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import classes from './Information.module.css'
 import Button from './../UI/Button/Button'
-import Input from './../UI/Input/Input'
 import { changeUsers } from './../../store/actions'
 import InputField from '../InputField/InputField'
 
